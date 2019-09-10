@@ -1,0 +1,9 @@
+<library path="lib/librobotx_remote_dashboard_panel">
+    <class name="robotx_remote_dashboard_panel/RobotXRemoteDashboardPanel"
+           type="robotx_remote_dashboard_panel::RobotXRemoteDashboardPanel"
+           base_class_type="rviz::Panel">
+      <description>
+        A panel widget for watching rostate_machine state
+      </description>
+    </class>
+  </library>
