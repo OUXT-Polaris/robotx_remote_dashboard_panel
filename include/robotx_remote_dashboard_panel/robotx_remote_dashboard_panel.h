@@ -22,6 +22,7 @@
 #include <sensor_msgs/BatteryState.h>
 #include <usv_control_msgs/AzimuthThrusterCatamaranDriveStamped.h>
 #include <geographic_msgs/GeoPose.h>
+#include <ros/package.h>
 
 // Headers in Boost
 #include <boost/optional.hpp>
@@ -46,8 +47,17 @@ namespace robotx_remote_dashboard_panel
     Q_OBJECT
     public:
         RobotXRemoteDashboardPanel(QWidget* parent = 0 );
+        ~RobotXRemoteDashboardPanel();
         virtual void load( const rviz::Config& config );
         virtual void save( rviz::Config config ) const;
+        /**Meter Objects**/
+        /*Voltage Meter*/
+        const float meter12v_min;
+        const float meter12v_low;
+        const float meter12v_max;
+        const float meter24v_min;
+        const float meter24v_low;
+        const float meter24v_max;
     public Q_SLOTS:
         void draw();
     protected:
@@ -70,6 +80,11 @@ namespace robotx_remote_dashboard_panel
         boost::optional<geographic_msgs::GeoPose> geopose_data_;
         void geoPoseCallback(const geographic_msgs::GeoPose::ConstPtr msg);
         ros::NodeHandle nh_;
+        QImage azimuthfig_;
+        QImage rollfig_;
+        QImage pitchfig_;
+        QImage hdgfig_;
+        QSvgRenderer* front_panel_handler_;
     };
 }
 
